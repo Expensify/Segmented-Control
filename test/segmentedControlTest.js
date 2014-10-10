@@ -24,4 +24,9 @@ describe( 'Segmented Control', function(){
     it( 'Sets the value to the first LI element in the UL by default', function(){
         assert.equal( control.segmentedControl( 'getValue' ), 'all' );
     });
+
+    it( 'Set value works if given one of the values in the markup', function(){
+        control.segmentedControl( 'setValue', 'approvers' );
+        assert.equal( control.segmentedControl( 'getValue' ), 'approvers' );
+    });
 });
