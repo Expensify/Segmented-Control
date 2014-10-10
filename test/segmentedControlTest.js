@@ -57,7 +57,10 @@ describe( 'Segmented Control', function(){
         assert.equal( control.segmentedControl( 'getActiveLabel' ), 'All' );
     });
 
-    it( 'Get the active label after stting a value' );
+    it( 'Get the active label after stting a value', function(){
+        control.segmentedControl( 'setValue', 'approvers' );
+        assert.equal( control.segmentedControl( 'getActiveLabel' ), 'Approvers' );
+    });
 
     it( 'Call the set callback' );
 
