@@ -29,4 +29,11 @@ describe( 'Segmented Control', function(){
         control.segmentedControl( 'setValue', 'approvers' );
         assert.equal( control.segmentedControl( 'getValue' ), 'approvers' );
     });
+
+    it( 'Set value throws error if value doesn\'t match any of the ones in the markup', function(){
+        var setInvalidValue = function(){
+            control.segmentedControl( 'setValue', 'whatever' );
+        };
+        assert.throw( setInvalidValue, Error );
+    });
 });

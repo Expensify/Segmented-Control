@@ -49,6 +49,9 @@ $.widget( 'expensify.segmentedControl', {
     },
 
     setValue: function( newValue ){
+        if( this.element.find( 'li[data-value="' + newValue + '"]' ).length === 0 ){
+            throw new Error( 'Value must be in the the data attribute of one of the LI elements' );
+        }
         this.element.find( 'li' ).removeClass( 'active' );
         this.element.find( 'li[data-value="' + newValue + '"]' ).addClass( 'active' );
     },
