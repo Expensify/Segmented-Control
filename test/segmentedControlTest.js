@@ -1,27 +1,18 @@
-// jQuery will throw an error without these
-jsdom = require( 'jsdom' ).jsdom;
-document = jsdom('<html><head><script></script></head><body>\
-                    <ul id="people_filter_type" class="segmented-control">\
-                        <li data-value="all" class="active">All</li>\
-                        <li data-value="approvers">Approvers</li>\
-                        <li data-value="admins">Administrators</li>\
-                    </ul>\
-                </body></html>');
-
-window = document.parentWindow;
-navigator = window.navigator = {};
-navigator.userAgent = 'NodeJs JsDom';
-
-chai = require( 'chai' );
-assert = chai.assert;
-$ = require( 'jquery' );
-require( 'jquery-ui' );
+require( '../setup.js' );
 require( '../segmentedControl.js' );
 
 describe( 'Segmented Control', function(){
-    var control = $( 'ul' ).segmentedControl();
+    var control = null;
 
-    it( 'Sets the value to the first LI element in the UL by default', function(){
+    beforeEach( function(){
+        control = $( 'ul.good' ).segmentedControl();
+    });
+
+    afterEach( function(){
+        control.segmentedControl( 'destroy' );
+    });
+
+    it( 'Set the value to the first LI element in the UL by default', function(){
         assert.equal( control.segmentedControl( 'getValue' ), 'all' );
     });
 
@@ -35,5 +26,61 @@ describe( 'Segmented Control', function(){
             control.segmentedControl( 'setValue', 'whatever' );
         };
         assert.throw( setInvalidValue, Error );
+    });
+
+    it( 'Fail when element isn\'t a UL or OL', function(){
+        var createControlOnDIV = function(){
+            $( 'div' ).segmentedControl();
+        };
+        assert.throw( createControlOnDIV, Error );
+    });
+
+    it( 'Fail when UL has no LI children', function(){
+        var createControlOnEmptyUL = function(){
+            $( 'ul.bad' ).segmentedControl();
+        };
+        assert.throw( createControlOnEmptyUL, Error );
+    });
+
+    it( 'Fail when LI elements have no data attribute (data-value)', function(){
+        var createControlWhenLIHasNoData = function(){
+            $( 'ul.nodata' ).segmentedControl();
+        };
+        assert.throw( createControlWhenLIHasNoData, Error );
+    });
+
+    it( 'Set the active class on the default active element', function(){
+        assert.ok( control.children( 'li:first-child' ).hasClass( 'active' ) );
+    });
+
+    it( 'Get the default active label', function(){
+        assert.equal( control.segmentedControl( 'getActiveLabel' ), 'All' );
+    });
+
+    it( 'Get the active label after stting a value', function(){
+        control.segmentedControl( 'setValue', 'approvers' );
+        assert.equal( control.segmentedControl( 'getActiveLabel' ), 'Approvers' );
+    });
+
+    it( 'Call the set callback after click', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.find( 'li[data-value=approvers]' ).trigger( 'click' );
+        callback.should.have.been.called();
+    });
+
+    it( 'Don\' call the set callback after click on active LI', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.find( 'li[data-value=all]' ).trigger( 'click' );
+        callback.should.not.have.been.called();
+    });
+
+    it( 'Does nothing when value changes but callback isn\'t a function', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.segmentedControl( 'setOnChange', null );
+        control.find( 'li[data-value=approvers]' ).trigger( 'click' );
+        callback.should.not.have.been.called();
     });
 });

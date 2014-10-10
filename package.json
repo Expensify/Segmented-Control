@@ -12,6 +12,7 @@
     "jquery-ui": "^1.10.5"
   },
   "devDependencies": {
+    "chai-spies": "^0.5.1",
     "jsdom": "^1.0.1",
     "mocha": "^1.21.4"
   },

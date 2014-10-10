@@ -3,6 +3,21 @@ $.widget( 'expensify.segmentedControl', {
     _onChangeCallback: null,
 
     _create: function(){
+        if( this.element.prop( 'tagName' ) !== 'UL' && this.element.prop( 'tagName' ) !== 'OL' ){
+            throw new Error( 'Can\'t create segmented control non-list element' );
+
+        }
+
+        if( this.element.children( 'LI' ).length === 0 ){
+            throw new Error( 'Can\'t create segmented control non-list element' );
+        }
+
+        this.element.children( 'LI' ).each( function( index, elem ){
+            if( !$( elem ).attr( 'data-value' ) ){
+                throw new Error( 'LI must have a data-value data attribute' );
+            }
+        });
+
         this.element.find( 'li:first-child' ).addClass( 'active' );
 
         this._on({
