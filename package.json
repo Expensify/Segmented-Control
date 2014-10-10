@@ -1,0 +1,22 @@
+{
+  "name": "segmented-control",
+  "version": "0.0.0",
+  "description": "UI control similar to radio buttons",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^1.9.2",
+    "jquery": "^2.1.1",
+    "jquery-ui": "^1.10.5"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
