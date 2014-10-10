@@ -76,6 +76,11 @@ describe( 'Segmented Control', function(){
         callback.should.not.have.been.called();
     });
 
-    it( 'Does nothing when value changes but no callback is set' );
-
+    it( 'Does nothing when value changes but callback isn\'t a function', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.segmentedControl( 'setOnChange', null );
+        control.find( 'li[data-value=approvers]' ).trigger( 'click' );
+        callback.should.not.have.been.called();
+    });
 });
