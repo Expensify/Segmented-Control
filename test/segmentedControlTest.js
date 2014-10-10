@@ -2,7 +2,15 @@ require( '../setup.js' );
 require( '../segmentedControl.js' );
 
 describe( 'Segmented Control', function(){
-    var control = $( 'ul.good' ).segmentedControl();
+    var control = null;
+
+    beforeEach( function(){
+        control = $( 'ul.good' ).segmentedControl();
+    });
+
+    afterEach( function(){
+        control.segmentedControl( 'destroy' );
+    });
 
     it( 'Set the value to the first LI element in the UL by default', function(){
         assert.equal( control.segmentedControl( 'getValue' ), 'all' );
@@ -41,7 +49,9 @@ describe( 'Segmented Control', function(){
         assert.throw( createControlWhenLIHasNoData, Error );
     });
 
-    it( 'Set the active class on the active element' );
+    it( 'Set the active class on the default active element', function(){
+        assert.ok( control.children( 'li:first-child' ).hasClass( 'active' ) );
+    });
 
     it( 'Get the active label' );
 
