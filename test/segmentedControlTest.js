@@ -20,7 +20,12 @@ describe( 'Segmented Control', function(){
         assert.throw( setInvalidValue, Error );
     });
 
-    it( 'Fail when element isn\'t a UL or OL' );
+    it( 'Fail when element isn\'t a UL or OL', function(){
+        var createControlOnDIV = function(){
+            $( 'div' ).segmentedControl();
+        };
+        assert.throw( createControlOnDIV, Error );
+    });
 
     it( 'Fail when UL has no LI children' );
 

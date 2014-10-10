@@ -3,11 +3,12 @@ jsdom = require( 'jsdom' ).jsdom;
 
 // This is the markup with which we're testing
 document = jsdom('<html><head><script></script></head><body>\
-                    <ul id="people_filter_type" class="segmented-control">\
+                    <ul>\
                         <li data-value="all" class="active">All</li>\
                         <li data-value="approvers">Approvers</li>\
                         <li data-value="admins">Administrators</li>\
                     </ul>\
+                    <div></div>\
                 </body></html>');
 
 window = document.parentWindow;

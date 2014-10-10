@@ -3,6 +3,10 @@ $.widget( 'expensify.segmentedControl', {
     _onChangeCallback: null,
 
     _create: function(){
+        if( this.element.prop( 'tagName' ) !== 'UL' && this.element.prop( 'tagName' ) !== 'OL' ){
+            throw new Error( 'Can\'t create segmented control non-list element' );
+
+        }
         this.element.find( 'li:first-child' ).addClass( 'active' );
 
         this._on({
