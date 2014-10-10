@@ -21,7 +21,7 @@ require( '../segmentedControl.js' );
 describe( 'Segmented Control', function(){
     var control = $( 'ul' ).segmentedControl();
 
-    it( 'Sets the value to the first LI element in the UL by default', function(){
+    it( 'Set the value to the first LI element in the UL by default', function(){
         assert.equal( control.segmentedControl( 'getValue' ), 'all' );
     });
 
@@ -36,4 +36,12 @@ describe( 'Segmented Control', function(){
         };
         assert.throw( setInvalidValue, Error );
     });
+
+    it( 'Fail when element isn\'t a UL or OL' );
+
+    it( 'Fail when UL has no LI children' );
+
+    it( 'Fail when LI elements have no data attribute (data-value)' );
+
+    it( 'Fail when LI elements have no data attribute (data-value)' );
 });
