@@ -53,7 +53,11 @@ describe( 'Segmented Control', function(){
         assert.ok( control.children( 'li:first-child' ).hasClass( 'active' ) );
     });
 
-    it( 'Get the active label' );
+    it( 'Get the default active label', function(){
+        assert.equal( control.segmentedControl( 'getActiveLabel' ), 'All' );
+    });
+
+    it( 'Get the active label after stting a value' );
 
     it( 'Call the set callback' );
 
