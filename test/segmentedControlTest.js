@@ -26,5 +26,12 @@ describe( 'Segmented Control', function(){
 
     it( 'Fail when LI elements have no data attribute (data-value)' );
 
-    it( 'Fail when LI elements have no data attribute (data-value)' );
+    it( 'Set the active class on the active element' );
+
+    it( 'Get the active label' );
+
+    it( 'Call the set callback' );
+
+    it( 'Does nothing when value changes but no callback is set' );
+
 });
