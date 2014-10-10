@@ -62,7 +62,12 @@ describe( 'Segmented Control', function(){
         assert.equal( control.segmentedControl( 'getActiveLabel' ), 'Approvers' );
     });
 
-    it( 'Call the set callback' );
+    it( 'Call the set callback after click', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.find( 'li[data-value=approvers]' ).trigger( 'click' );
+        callback.should.have.been.called();
+    });
 
     it( 'Does nothing when value changes but no callback is set' );
 

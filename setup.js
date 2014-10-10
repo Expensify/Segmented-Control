@@ -22,7 +22,9 @@ navigator = window.navigator = {};
 navigator.userAgent = 'NodeJs JsDom';
 
 chai = require( 'chai' );
+spies = require('chai-spies');
 assert = chai.assert;
+chai.use( spies );
+should = chai.should();
 $ = require( 'jquery' );
 require( 'jquery-ui' );
-
