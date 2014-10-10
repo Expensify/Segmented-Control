@@ -69,6 +69,13 @@ describe( 'Segmented Control', function(){
         callback.should.have.been.called();
     });
 
+    it( 'Don\' call the set callback after click on active LI', function(){
+        var callback = chai.spy();
+        control.segmentedControl( 'setOnChange', callback );
+        control.find( 'li[data-value=all]' ).trigger( 'click' );
+        callback.should.not.have.been.called();
+    });
+
     it( 'Does nothing when value changes but no callback is set' );
 
 });
