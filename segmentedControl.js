@@ -2,21 +2,26 @@ $.widget( 'expensify.segmentedControl', {
 
     _onChangeCallback: null,
 
-    _create: function(){
-        if( this.element.prop( 'tagName' ) !== 'UL' && this.element.prop( 'tagName' ) !== 'OL' ){
+    _validate: function(){
+        var elem = this.element;
+        if( elem.prop( 'tagName' ) !== 'UL' && elem.prop( 'tagName' ) !== 'OL' ){
             throw new Error( 'Can\'t create segmented control non-list element' );
 
         }
 
-        if( this.element.children( 'LI' ).length === 0 ){
+        if( elem.children( 'LI' ).length === 0 ){
             throw new Error( 'Can\'t create segmented control non-list element' );
         }
 
-        this.element.children( 'LI' ).each( function( index, elem ){
+        elem.children( 'LI' ).each( function( index, elem ){
             if( !$( elem ).attr( 'data-value' ) ){
                 throw new Error( 'LI must have a data-value data attribute' );
             }
         });
+    },
+
+    _create: function(){
+        this._validate();
 
         this.element.find( 'li:first-child' ).addClass( 'active' );
 
