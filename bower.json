@@ -1,0 +1,25 @@
+{
+  "name": "segmented-control",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Expensify/Segmented-Control",
+  "authors": [
+    "carlos@expensify.com"
+  ],
+  "description": "jQuery UI widget with similar behavior to radio buttons",
+  "main": "segmentedControl.js",
+  "keywords": [
+    "UI",
+    "widget",
+    "radio",
+    "jQuery",
+    "expensify"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
