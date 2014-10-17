@@ -172,19 +172,15 @@
         </p>
     </center>
 
-    <pre>
-        <code>
-        // The Markup
-        &lt;ul&gt;
-            &lt;li data-value="all"&gt;All&lt;/li&gt;
-            &lt;li data-value="approvers"&gt;Approvers&lt;/li&gt;
-            &lt;li data-value="admins"&gt;Administrators&lt;/li&gt;
-        &lt;/ul&gt;
+    <pre><code>// The Markup
+&lt;ul&gt;
+    &lt;li data-value="all"&gt;All&lt;/li&gt;
+    &lt;li data-value="approvers"&gt;Approvers&lt;/li&gt;
+    &lt;li data-value="admins"&gt;Administrators&lt;/li&gt;
+&lt;/ul&gt;
 
-        // The Javascript
-        $( 'ul' ).segmentedControl();
-        </code>
-    </pre>
+// The Javascript
+$( 'ul' ).segmentedControl();</code></pre>
 
     <h2>API</h2>
 
@@ -192,53 +188,37 @@
 
     <p>Sets the callback that will be invoked when the value changes.</p>
 
-    <pre>
-        <code>$( 'ul' ).segmentedControl( 'setOnChange', callback );</code>
-    </pre>
+    <pre><code>$( 'ul' ).segmentedControl( 'setOnChange', callback );</code></pre>
 
     <h3>setValue</h3>
 
     <p>Sets the value of the control. Must match one of the ones specified in the data attribute <code>values</code>.</p>
 
-    <pre>
-        <code>
-        $( 'ul' ).segmentedControl( 'setValue', 'approvers' );
-        </code>
-    </pre>
+    <pre><code>$( 'ul' ).segmentedControl( 'setValue', 'approvers' );</code></pre>
 
     <h3>getValue</h3>
 
     <p>Returns the value of the control, as specified in the data attribute <code>values</code>.</p>
 
-    <pre>
-        <code>
-        $( 'ul' ).segmentedControl( 'getValue' ); // approvers
-        </code>
-    </pre>
+    <pre><code>$( 'ul' ).segmentedControl( 'getValue' ); // approvers</code></pre>
 
     <h3>getActiveLabel</h3>
 
     <p>Returns the text corresponding to the active value.</p>
 
-    <pre>
-        <code>$( 'ul' ).segmentedControl( 'getActiveLabel' ); // Approvers</code>
-    </pre>
+    <pre><code>$( 'ul' ).segmentedControl( 'getActiveLabel' ); // Approvers</code></pre>
 
     <h2>Try it</h2>
 
-    <pre>
-        <code>
-        // Clone the repo
-        git clone git@github.com:Expensify/Segmented-Control.git
+    <pre><code>// Clone the repo
+git clone git@github.com:Expensify/Segmented-Control.git
 
-        // Install dependencies
-        npm install
-        bower install
+// Install dependencies
+npm install
+bower install
 
-        // Run the tests
-        npm test
-        </code>
-    </pre>
+// Run the tests
+npm test</code></pre>
 
     <script type="application/javascript" src="lib/jquery.js"></script>
     <script type="application/javascript" src="lib/jquery-ui.js"></script>
