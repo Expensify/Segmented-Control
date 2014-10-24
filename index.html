@@ -1,20 +1,243 @@
+<!doctype html>
 <html>
-<head></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+            font-size: 13px;
+            line-height: 18px;
+            color: #737373;
+            background-color: white;
+            margin: 10px 13px 10px 13px;
+        }
+        table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+        }
+        td,th {
+            border: 1px solid #ddd;
+            padding: 3px 10px;
+        }
+        th {
+            padding: 5px 10px;
+        }
+
+        a {
+            color: #0069d6;
+        }
+        a:hover {
+            color: #0050a3;
+            text-decoration: none;
+        }
+        a img {
+            border: none;
+        }
+        p {
+            margin-bottom: 9px;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #404040;
+            line-height: 36px;
+        }
+        h1 {
+            margin-bottom: 18px;
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        h3 {
+            font-size: 18px;
+        }
+        h4 {
+            font-size: 16px;
+        }
+        h5 {
+            font-size: 14px;
+        }
+        h6 {
+            font-size: 13px;
+        }
+        hr {
+            margin: 0 0 19px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+        }
+        blockquote {
+            padding: 13px 13px 21px 15px;
+            margin-bottom: 18px;
+            font-family:georgia,serif;
+            font-style: italic;
+        }
+        blockquote:before {
+            content:"\201C";
+            font-size:40px;
+            margin-left:-10px;
+            font-family:georgia,serif;
+            color:#eee;
+        }
+        blockquote p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 18px;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+        code, pre {
+            font-family: Monaco, Andale Mono, Courier New, monospace;
+        }
+        code {
+            background-color: #fee9cc;
+            color: rgba(0, 0, 0, 0.75);
+            padding: 1px 3px;
+            font-size: 12px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+        pre {
+            display: block;
+            padding: 14px;
+            margin: 0 0 18px;
+            line-height: 16px;
+            font-size: 11px;
+            border: 1px solid #d9d9d9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        pre code {
+            background-color: #fff;
+            color:#737373;
+            font-size: 11px;
+            padding: 0;
+        }
+        sup {
+            font-size: 0.83em;
+            vertical-align: super;
+            line-height: 0;
+        }
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+        @media screen and (min-width: 914px) {
+            body {
+                width: 854px;
+                margin:10px auto;
+            }
+        }
+        @media print {
+            body,code,pre code,h1,h2,h3,h4,h5,h6 {
+                color: black;
+            }
+            table, pre {
+                page-break-inside: avoid;
+            }
+        }
+        img {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="segmentedControl.css">
+    <title>Segmented Control</title>
+
+</head>
 <body>
-    <ul class="good">
-        <li data-value="all">All</li>
-        <li data-value="approvers">Approvers</li>
-        <li data-value="admins">Administrators</li>
-    </ul>
+<a href="https://github.com/Expensify/Segmented-Control"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+    <img src="http://d2k5nsl2zxldvw.cloudfront.net/images/bg_logoBlock_subpage.png" alt="We're hiring!" title="We're hiring!">
+    <h1>Segmented Control</h1>
 
-    <div></div>
+    <p>Segmented Control is a minimalistic UI control for "single choice" of a value that we use on our web application. It's easy to use and has a simple API.</p>
+    <center>
+        <ul id="segmented-control" class="segmented-control">
+            <li data-value="all">All</li>
+            <li data-value="approvers">Approvers</li>
+            <li data-value="admins">Administrators</li>
+        </ul>
+        <p id="segmented-control-value">
+        Value: <span id="value">all</span>.
+        Label: <span id="label">All</span>
+        </p>
+    </center>
 
-    <ul class="bad"></ul>
+    <pre><code>// The Markup
+&lt;ul&gt;
+    &lt;li data-value="all"&gt;All&lt;/li&gt;
+    &lt;li data-value="approvers"&gt;Approvers&lt;/li&gt;
+    &lt;li data-value="admins"&gt;Administrators&lt;/li&gt;
+&lt;/ul&gt;
 
-    <ul class="nodata">
-        <li>All</li>
-        <li>Approvers</li>
-        <li>Administrators</li>
-    </ul>
+// The Javascript
+$( 'ul' ).segmentedControl();</code></pre>
+
+    <h2>API</h2>
+
+    <h3>setOnChange</h3>
+
+    <p>Sets the callback that will be invoked when the value changes.</p>
+
+    <pre><code>$( 'ul' ).segmentedControl( 'setOnChange', callback );</code></pre>
+
+    <h3>setValue</h3>
+
+    <p>Sets the value of the control. Must match one of the ones specified in the data attribute <code>values</code>.</p>
+
+    <pre><code>$( 'ul' ).segmentedControl( 'setValue', 'approvers' );</code></pre>
+
+    <h3>getValue</h3>
+
+    <p>Returns the value of the control, as specified in the data attribute <code>values</code>.</p>
+
+    <pre><code>$( 'ul' ).segmentedControl( 'getValue' ); // approvers</code></pre>
+
+    <h3>getActiveLabel</h3>
+
+    <p>Returns the text corresponding to the active value.</p>
+
+    <pre><code>$( 'ul' ).segmentedControl( 'getActiveLabel' ); // Approvers</code></pre>
+
+    <h2>Try it</h2>
+
+    <pre><code>// Clone the repo
+git clone https://github.com/Expensify/Segmented-Control.git
+
+// Install dependencies
+npm install
+bower install
+
+// Run the tests
+npm test</code></pre>
+
+    <script type="application/javascript" src="lib/jquery.js"></script>
+    <script type="application/javascript" src="lib/jquery-ui.js"></script>
+    <script type="application/javascript" src="lib/segmentedControl.js"></script>
+    <script type="application/javascript">
+        $( function(){
+            var $segmentedControl = $( '#segmented-control' );
+            $segmentedControl.segmentedControl();
+            $segmentedControl.segmentedControl( 'setOnChange', function(){
+                $( '#value' ).html( $segmentedControl.segmentedControl( 'getValue' ) );
+                $( '#label' ).html( $segmentedControl.segmentedControl( 'getActiveLabel' ) );
+            });
+        });
+    </script>
 </body>
 </html>
